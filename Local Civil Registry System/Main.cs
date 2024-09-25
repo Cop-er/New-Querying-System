@@ -30,5 +30,12 @@ namespace Local_Civil_Registry_System
             BirthQueryForm.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Marriage_Query Marriage_Query_Form = new Marriage_Query();
+            Marriage_Query_Form.Show();
+            this.Hide();
+        }
     }
 }
