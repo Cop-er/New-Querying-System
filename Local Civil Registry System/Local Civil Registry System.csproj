@@ -109,6 +109,12 @@
     <Compile Include="Birth_Query.designer.cs">
       <DependentUpon>Birth_Query.cs</DependentUpon>
     </Compile>
+    <Compile Include="Death_Query.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Death_Query.designer.cs">
+      <DependentUpon>Death_Query.cs</DependentUpon>
+    </Compile>
     <Compile Include="Marriage_Query.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Birth_Query.resx">
       <DependentUpon>Birth_Query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Death_Query.resx">
+      <DependentUpon>Death_Query.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Marriage_Query.resx">
       <DependentUpon>Marriage_Query.cs</DependentUpon>

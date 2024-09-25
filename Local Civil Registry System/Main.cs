@@ -37,5 +37,12 @@ namespace Local_Civil_Registry_System
             Marriage_Query_Form.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Death_Query Death_Query_Form = new Death_Query();
+            Death_Query_Form.Show();
+            this.Hide();
+        }
     }
 }

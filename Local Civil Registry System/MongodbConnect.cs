@@ -322,5 +322,104 @@ namespace Local_Civil_Registry_System
             return dataTable;
         }
 
+
+
+
+
+
+
+
+
+        //Death
+
+        public async Task<DataTable> QueryDeathChild(string dt1, string dt2)
+        {
+            ConnectToMongoDB("Death");
+            List<BsonDocument> _allResults = new List<BsonDocument>();
+
+            for (int year = 1953; year <= DateTime.Now.Year; year++)
+            {
+                var _collection = Database.GetCollection<BsonDocument>(year.ToString());
+                var _filterFirst = Builders<BsonDocument>.Filter.Regex("FIRST", new BsonRegularExpression(dt1, "i"));
+                var _filterLast = Builders<BsonDocument>.Filter.Regex("LAST", new BsonRegularExpression(dt2, "i"));
+                var _combinedFilter = Builders<BsonDocument>.Filter.And(_filterFirst, _filterLast);
+                var _result = await _collection.Find(_combinedFilter).ToListAsync();
+                _allResults.AddRange(_result);
+            }
+            DataTable dataTable = ConvertToDataTableDeath(_allResults);
+            return dataTable;
+        }
+
+
+        private DataTable ConvertToDataTableDeath(List<BsonDocument> documents)
+        {
+            var columnsToInclude = new Dictionary<string, string>
+            {
+                { "CT", "No." },
+                { "LCR_NO", "Registry Number" },
+                { "FIRST", "First Name" },
+                { "MI", "MI" },
+                { "LAST", "Last Name" },
+                
+                { "DATEX", "Date of Death" },
+                { "SEX", "Sex (Male: 1, Female: 2)" },
+                { "AGE", "Age" },
+                { "FOLIO_NO", "Book Number" },
+                { "PAGE_NO", "Page Number" },
+
+                { "MFIRST", "Mother First Name" },
+                { "MMI", "Mother MI" },
+                { "MLAST", "Mother Last Name" },
+                { "FFIRST", "Father First Name" },
+                { "FMI", "Father MI" },
+                { "FLAST", "Father Last Name" },
+
+                { "DREG", "Date of Registration" },
+
+
+            };
+
+            DataTable dataTable = new DataTable();
+
+            foreach (var field in columnsToInclude)
+            {
+                dataTable.Columns.Add(field.Value, typeof(string));
+            }
+
+            int i = 1;
+
+            foreach (var document in documents)
+            {
+                var row = dataTable.NewRow();
+                foreach (var column in columnsToInclude.Keys)
+                {
+                    if (document.Contains(column))
+                    {
+                        if (column == "CT") // Use the key directly for comparison
+                        {
+                            row[columnsToInclude[column]] = i++; // Assign the incrementing number
+                        }
+                        else
+                        {
+                            row[columnsToInclude[column]] = document[column].ToString();
+                        }
+                    }
+                }
+                dataTable.Rows.Add(row);
+            }
+
+            return dataTable;
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
