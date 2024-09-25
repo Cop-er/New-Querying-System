@@ -24,7 +24,7 @@ namespace Local_Civil_Registry_System
             this.Size = new Size(803, 456);
 
             MongodbConnect mc = new MongodbConnect();
-            mc.QueryBirthChild();
+            await mc.QueryBirthChild();
 
         }
 

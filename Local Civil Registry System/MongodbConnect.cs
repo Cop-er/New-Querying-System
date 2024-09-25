@@ -16,7 +16,7 @@ namespace Local_Civil_Registry_System
         public MongoClient Client { get; private set; }
         public IMongoDatabase Database { get; private set; }
 
-        public async Task ConnectToMongoDB()
+        public void ConnectToMongoDB()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace Local_Civil_Registry_System
 
         public async Task QueryBirthChild()
         {
-            await ConnectToMongoDB();
+            ConnectToMongoDB();
             var _collection = Database.GetCollection<BsonDocument>("2000");
             var _filterFirst = Builders<BsonDocument>.Filter.Regex("FIRST", new BsonRegularExpression("john", "i"));
             var _filterLast = Builders<BsonDocument>.Filter.Regex("LAST", new BsonRegularExpression("S", "i"));
