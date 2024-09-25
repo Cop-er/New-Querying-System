@@ -12,11 +12,10 @@ namespace Local_Civil_Registry_System
     {
 
         private readonly string DatabaseConnection = "mongodb://admin:Losser989@localhost:27017/";
-        private readonly string DatabaseName = "Birth";
         public MongoClient Client { get; private set; }
         public IMongoDatabase Database { get; private set; }
 
-        public void ConnectToMongoDB()
+        public void ConnectToMongoDB(string DatabaseName)
         {
             try
             {
@@ -30,19 +29,63 @@ namespace Local_Civil_Registry_System
             }
         }
 
-        public async Task QueryBirthChild()
+        public async Task QueryBirthChild(string dt1, string dt2)
         {
-            ConnectToMongoDB();
-            var _collection = Database.GetCollection<BsonDocument>("2000");
-            var _filterFirst = Builders<BsonDocument>.Filter.Regex("FIRST", new BsonRegularExpression("john", "i"));
-            var _filterLast = Builders<BsonDocument>.Filter.Regex("LAST", new BsonRegularExpression("S", "i"));
-            var _combinedFilter = Builders<BsonDocument>.Filter.And(_filterFirst, _filterLast);
-            var _result = await _collection.Find(_combinedFilter).ToListAsync();
-            foreach (var x in _result)
+            ConnectToMongoDB("Birth");
+
+            for (int year = 1920; year <= DateTime.Now.Year; year++)
             {
-                Console.WriteLine(x.ToString());
+                var _collection = Database.GetCollection<BsonDocument>(year.ToString());
+                var _filterFirst = Builders<BsonDocument>.Filter.Regex("FIRST", new BsonRegularExpression(dt1, "i"));
+                var _filterLast = Builders<BsonDocument>.Filter.Regex("LAST", new BsonRegularExpression(dt2, "i"));
+                var _combinedFilter = Builders<BsonDocument>.Filter.And(_filterFirst, _filterLast);
+                var _result = await _collection.Find(_combinedFilter).ToListAsync();
+                foreach (var x in _result)
+                {
+                    Console.WriteLine(x.ToString());
+                }
             }
+
         }
+
+        public async Task QueryMotherChild(string dt1, string dt2)
+        {
+            ConnectToMongoDB("Birth");
+
+            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            {
+                var _collection = Database.GetCollection<BsonDocument>(year.ToString());
+                var _filterFirst = Builders<BsonDocument>.Filter.Regex("MFIRST", new BsonRegularExpression(dt1, "i"));
+                var _filterLast = Builders<BsonDocument>.Filter.Regex("MLAST", new BsonRegularExpression(dt2, "i"));
+                var _combinedFilter = Builders<BsonDocument>.Filter.And(_filterFirst, _filterLast);
+                var _result = await _collection.Find(_combinedFilter).ToListAsync();
+                foreach (var x in _result)
+                {
+                    Console.WriteLine(x.ToString());
+                }
+            }
+
+        }
+
+        public async Task QueryFatherChild(string dt1, string dt2)
+        {
+            ConnectToMongoDB("Birth");
+
+            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            {
+                var _collection = Database.GetCollection<BsonDocument>(year.ToString());
+                var _filterFirst = Builders<BsonDocument>.Filter.Regex("FFIRST", new BsonRegularExpression(dt1, "i"));
+                var _filterLast = Builders<BsonDocument>.Filter.Regex("FLAST", new BsonRegularExpression(dt2, "i"));
+                var _combinedFilter = Builders<BsonDocument>.Filter.And(_filterFirst, _filterLast);
+                var _result = await _collection.Find(_combinedFilter).ToListAsync();
+                foreach (var x in _result)
+                {
+                    Console.WriteLine(x.ToString());
+                }
+            }
+
+        }
+
 
 
     }

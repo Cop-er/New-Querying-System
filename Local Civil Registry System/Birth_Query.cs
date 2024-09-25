@@ -40,9 +40,10 @@ namespace Local_Civil_Registry_System
 
         }
 
-        private void btn_child_name_Click(object sender, EventArgs e)
+        private async void btn_child_name_Click(object sender, EventArgs e)
         {
-
+            MongodbConnect mc = new MongodbConnect();
+            await mc.QueryBirthChild("John", "Sm");
         }
 
 
