@@ -16,8 +16,8 @@ namespace Local_Civil_Registry_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Main());
-            Application.Run(new Birth_Data_Entry());
+            Application.Run(new Main());
+            //Application.Run(new Birth_Query());
         }
     }
 }

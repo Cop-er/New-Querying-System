@@ -126,17 +126,24 @@ namespace Local_Civil_Registry_System
                 { "FIRST", "First Name" },
                 { "MI", "MI" },
                 { "LAST", "Last Name" },
+
                 { "MFIRST", "Mother First Name" },
                 { "MMI", "Mother MI" },
                 { "MLAST", "Mother Last Name" },
+                { "MNATL", "Mother Nationality" },
+
+
                 { "FFIRST", "Father First Name" },
                 { "FMI", "Father MI" },
                 { "FLAST", "Father Last Name" },
+                { "FNATL", "Father Nationality" },
+
                 { "DATE", "Date of Birth" },
                 { "SEX", "Sex (Male: 1, Female: 2)" },
                 { "FOL", "Book Number" },
                 { "PAGE", "Page Number" },
                 { "DATEMAR", "Date of Marriage" },
+                { "PLACEMAR", "Place of Marriage" },
                 { "DREG", "Date of Registration" },
 
 

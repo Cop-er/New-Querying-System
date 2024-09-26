@@ -168,6 +168,8 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MongodbConnect.cs" />
+    <Compile Include="Nationality_Converter.cs" />
+    <Compile Include="PlaceOfMarriageCodes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Birth_Data_Entry.resx">

@@ -25,6 +25,21 @@ namespace Local_Civil_Registry_System
             button4.BackColor = Color.FromName("ControlLight");
             Center_Screen();
             Add_Signatures();
+
+            var (_withTime, _noTime) = Date_Time_Now();
+            textBox19.Text = _noTime;
+
+           
+        }
+
+             
+
+        private (string _withTime, string _noTime) Date_Time_Now()
+        {
+            DateTime dt = DateTime.Now;
+            string _formatDT_with_time = dt.ToString("MMMM dd, yyyy HH:mm:ss");
+            string _formatDT_no_time = dt.ToString("MMMM dd, yyyy");
+            return (_formatDT_with_time, _formatDT_no_time);
         }
 
         private void Center_Screen()
@@ -103,5 +118,85 @@ namespace Local_Civil_Registry_System
         {
 
         }
-    }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= 21; i++)
+            {
+                string textBoxName = $"textBox{i}";
+                Control textBox = this.Controls.Find(textBoxName, true).FirstOrDefault();
+                if (textBox is TextBox tb)
+                {
+                    if (textBox.Name != "textBox21")
+                    {
+                        tb.Text = "";
+                    }
+                }
+            }
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            var (wt, nt) = Date_Time_Now();
+            dt_issue.Text = wt;
+        }
+
+        //13 Entries
+        public void Init_Data_Entry(
+            String BN,
+            String PG,
+            String RN,
+            String DOR,
+            String NC,
+            String SEX,
+            String DOB,
+            String POB,
+            String NOM,
+            String COM,
+            String NOF,
+            String COF,
+            String DOMOP,
+            String PLACEMAR
+            )
+        {
+
+            string _SEX = "";
+            string _URO = "";
+
+            if (SEX == "1")
+            {
+                _SEX = "MALE";
+                _URO = "upon HIS request";
+            } else {
+                _SEX = "FEMALE";
+                _URO = "upon HER request";
+             };
+
+            PlaceOfMarriageCodes pomc = new PlaceOfMarriageCodes();
+            var _PLACEMAR = pomc.GetPlacesCodes(PLACEMAR);
+
+            textBox1.Text = RN;
+            textBox2.Text = DOR;
+            textBox3.Text = NC;
+            textBox4.Text = _SEX;
+            textBox5.Text = DOB;
+            textBox6.Text = POB;
+            textBox7.Text = NOM;
+            textBox8.Text = COM;
+            textBox9.Text = NOF;
+            textBox10.Text = COF; 
+            textBox11.Text = DOMOP;
+            textBox12.Text = _PLACEMAR;
+            textBox13.Text = NC;
+            textBox14.Text = _URO;
+            textBox15.Text = BN;
+            textBox16.Text = PG;
+            textBox17.Text = "ROLANDO E. CEMANES";
+            textBox18.Text = "ENGR. CERELITO V. BASAÑEZ, MPA";
+            //textBox20.Text = RN;
+            //textBox21.Text = RN;
+
+        }
+    }  
 }
