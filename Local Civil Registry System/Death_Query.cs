@@ -20,7 +20,7 @@ namespace Local_Civil_Registry_System
 
         private void Birth_Query_Load(object sender, EventArgs e)
         {
-            this.Text = "Birth Query";
+            this.Text = "Death Query";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             this.Size = new Size(803, 456);
@@ -48,6 +48,11 @@ namespace Local_Civil_Registry_System
 
         private async void CheckEntry(string _type)
         {
+            dataGridView1.DataSource = null;
+            dataGridView1.Refresh();
+            this.Enabled = false;
+            label9.Visible = true;
+
             MongodbConnect mc = new MongodbConnect();
             if (_type == "Child" && !string.IsNullOrWhiteSpace(txtChild_1.Text) && !string.IsNullOrWhiteSpace(txtChild_2.Text))
             {
@@ -76,7 +81,7 @@ namespace Local_Civil_Registry_System
             else if (_type == "Registry" && !string.IsNullOrWhiteSpace(txtRegistry.Text))
             {
                 btn_registry.Enabled = false;
-                var _results = await mc.QueryRegistryNumber(txtRegistry.Text);
+                var _results = await mc.QueryDeathRegistryNumber(txtRegistry.Text);
                 TableDesign(_results);
                 btn_registry.Enabled = true;
             }
@@ -85,6 +90,9 @@ namespace Local_Civil_Registry_System
             {
                 MessageBox.Show("Please enter both the first name and last name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            label9.Visible = false;
+            this.Enabled = true;
         }
 
         private void TableDesign(DataTable _results)
@@ -92,8 +100,6 @@ namespace Local_Civil_Registry_System
             dataGridView1.DataSource = _results;
             dataGridView1.Columns["No."].Width = 30;
             dataGridView1.Columns["Registry Number"].Width = 80;
-            dataGridView1.Columns["MI"].Width = 40;
-            dataGridView1.Columns["Age"].Width = 40;
             dataGridView1.Columns["Book Number"].Width = 40;
             dataGridView1.Columns["Page Number"].Width = 40;
         }

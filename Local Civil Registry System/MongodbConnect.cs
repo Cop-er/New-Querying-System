@@ -12,7 +12,7 @@ namespace Local_Civil_Registry_System
     class MongodbConnect
     {
 
-        private readonly string DatabaseConnection = "mongodb://admin:Losser989@localhost:27017/";
+        private readonly string DatabaseConnection = "mongodb://admin:Losser989@192.168.4.56:27017/?directConnection=true";
         public MongoClient Client { get; private set; }
         public IMongoDatabase Database { get; private set; }
 
@@ -35,7 +35,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Birth");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("FIRST", new BsonRegularExpression(dt1, "i"));
@@ -53,7 +53,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Birth");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("FFIRST", new BsonRegularExpression(dt1, "i"));
@@ -71,7 +71,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Birth");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("MFIRST", new BsonRegularExpression(dt1, "i"));
@@ -89,7 +89,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Birth");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("LCR", new BsonRegularExpression(dt1, "i"));
@@ -190,7 +190,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Marriage");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1952; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("G_FNAME", new BsonRegularExpression(dt1, "i"));
@@ -208,7 +208,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Marriage");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1952; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("W_FNAME", new BsonRegularExpression(dt1, "i"));
@@ -226,7 +226,7 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Marriage");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1920; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("LCR", new BsonRegularExpression(dt1, "i"));
@@ -337,13 +337,29 @@ namespace Local_Civil_Registry_System
             ConnectToMongoDB("Death");
             List<BsonDocument> _allResults = new List<BsonDocument>();
 
-            for (int year = 1953; year <= DateTime.Now.Year; year++)
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
             {
                 var _collection = Database.GetCollection<BsonDocument>(year.ToString());
                 var _filterFirst = Builders<BsonDocument>.Filter.Regex("FIRST", new BsonRegularExpression(dt1, "i"));
                 var _filterLast = Builders<BsonDocument>.Filter.Regex("LAST", new BsonRegularExpression(dt2, "i"));
                 var _combinedFilter = Builders<BsonDocument>.Filter.And(_filterFirst, _filterLast);
                 var _result = await _collection.Find(_combinedFilter).ToListAsync();
+                _allResults.AddRange(_result);
+            }
+            DataTable dataTable = ConvertToDataTableDeath(_allResults);
+            return dataTable;
+        }
+
+        public async Task<DataTable> QueryDeathRegistryNumber(string dt1)
+        {
+            ConnectToMongoDB("Death");
+            List<BsonDocument> _allResults = new List<BsonDocument>();
+
+            for (int year = 1900; year <= DateTime.Now.Year; year++)
+            {
+                var _collection = Database.GetCollection<BsonDocument>(year.ToString());
+                var _filterFirst = Builders<BsonDocument>.Filter.Regex("LCR_NO", new BsonRegularExpression(dt1, "i"));
+                var _result = await _collection.Find(_filterFirst).ToListAsync();
                 _allResults.AddRange(_result);
             }
             DataTable dataTable = ConvertToDataTableDeath(_allResults);

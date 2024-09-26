@@ -48,6 +48,11 @@ namespace Local_Civil_Registry_System
 
         private async void CheckEntry(string _type)
         {
+            dataGridView1.DataSource = null;
+            dataGridView1.Refresh();
+            this.Enabled = false;
+            label9.Visible = true;
+
             MongodbConnect mc = new MongodbConnect();
             if (_type == "Child" && !string.IsNullOrWhiteSpace(txtChild_1.Text) && !string.IsNullOrWhiteSpace(txtChild_2.Text))
             {
@@ -85,6 +90,10 @@ namespace Local_Civil_Registry_System
             {
                 MessageBox.Show("Please enter both the first name and last name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+
+            label9.Visible = false;
+            this.Enabled = true;
         }
 
         private void TableDesign(DataTable _results)
@@ -111,6 +120,14 @@ namespace Local_Civil_Registry_System
             };
         }
 
-        
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

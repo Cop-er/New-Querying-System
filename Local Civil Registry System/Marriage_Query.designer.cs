@@ -51,6 +51,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -267,7 +268,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(144, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(445, 23);
+            this.panel1.Size = new System.Drawing.Size(464, 23);
             this.panel1.TabIndex = 0;
             // 
             // btn_registry
@@ -341,11 +342,25 @@
             this.dataGridView1.Size = new System.Drawing.Size(741, 306);
             this.dataGridView1.TabIndex = 1;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.DarkGray;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(170, 154);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(447, 109);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "loading ...";
+            this.label9.UseWaitCursor = true;
+            this.label9.Visible = false;
+            // 
             // Marriage_Query
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 417);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Marriage_Query";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -365,6 +380,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -393,5 +409,6 @@
         private System.Windows.Forms.TextBox txtRegistry;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label9;
     }
 }
