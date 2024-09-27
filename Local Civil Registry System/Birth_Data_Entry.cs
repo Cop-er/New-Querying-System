@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
 
 namespace Local_Civil_Registry_System
 {
@@ -196,6 +197,11 @@ namespace Local_Civil_Registry_System
             textBox18.Text = "ENGR. CERELITO V. BASAÑEZ, MPA";
             //textBox20.Text = RN;
             //textBox21.Text = RN;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }  

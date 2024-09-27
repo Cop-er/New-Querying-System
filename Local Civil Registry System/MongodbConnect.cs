@@ -11,7 +11,7 @@ namespace Local_Civil_Registry_System
 {
     class MongodbConnect
     {
-
+        public readonly string _birthPrintForm = @"C:\Users\Administrator\source\repos\Local Civil Registry System\Local Civil Registry System\Birth_Certified_True_Copy.rdlc";
         private readonly string DatabaseConnection = "mongodb://admin:Losser989@192.168.4.56:27017/?directConnection=true";
         public MongoClient Client { get; private set; }
         public IMongoDatabase Database { get; private set; }
