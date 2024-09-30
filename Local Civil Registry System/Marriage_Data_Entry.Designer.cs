@@ -1,6 +1,6 @@
 ﻿namespace Local_Civil_Registry_System
 {
-    partial class Birth_Data_Entry
+    partial class Marriage_Data_Entry
     {
         /// <summary>
         /// Required designer variable.
@@ -219,7 +219,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(218, 80);
             this.label1.TabIndex = 0;
-            this.label1.Text = "CERTIFIED TRUE COPY  - BIRTH -";
+            this.label1.Text = "CERTIFIED TRUE COPY  - MARRIAGE -";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
@@ -784,7 +784,7 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Birth_Data_Entry
+            // Marriage_Data_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -792,7 +792,7 @@
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Birth_Data_Entry";
+            this.Name = "Marriage_Data_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOCAL CIVIL REGISTRY - CERTIFIED TRUE COPY SYSTEM -";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Birth_Data_Entry_FormClosing);
