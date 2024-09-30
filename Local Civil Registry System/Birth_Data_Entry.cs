@@ -13,6 +13,9 @@ namespace Local_Civil_Registry_System
 {
     public partial class Birth_Data_Entry : Form
     {
+        dynamic _showRemarks = "false";
+        dynamic _showHeader = "false";
+
         public Birth_Data_Entry()
         {
             InitializeComponent();
@@ -29,8 +32,6 @@ namespace Local_Civil_Registry_System
 
             var (_withTime, _noTime) = Date_Time_Now();
             textBox19.Text = _noTime;
-
-           
         }
 
              
@@ -106,18 +107,30 @@ namespace Local_Civil_Registry_System
             {
                 button4.BackColor = Color.FromName("ControlLight");
                 Remarks_Sizing_No_Remarks();
+                _showRemarks = "false";
 
             } else
             {
                 button4.BackColor = Color.FromArgb(128, 128, 255);
                 Remarks_Sizing_With_Remarks();
+                _showRemarks = "true";
             }
             
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (button3.BackColor == Color.FromArgb(128, 128, 255))
+            {
+                button3.BackColor = Color.FromName("ControlLight");
+                _showHeader = "false";
 
+            }
+            else
+            {
+                button3.BackColor = Color.FromArgb(128, 128, 255);
+                _showHeader = "true";
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -202,7 +215,75 @@ namespace Local_Civil_Registry_System
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Print_Data();
+        }
 
+        private async Task<string> Title_Signature(string data)
+        {
+
+            MongodbConnect mc = new MongodbConnect();
+            var document = await mc.LCR_Signatures_Title(data);
+            if (document != null && document.Contains("Appointed_Position"))
+            {
+                var appointedPosition = document["Appointed_Position"].AsString;
+                return appointedPosition;
+            }
+
+            return "";
+        }
+
+
+        private async void Print_Data()
+        {
+            string BN = textBox15.Text;
+            string PG = textBox16.Text;
+            string RN = textBox1.Text;
+            string DOR = textBox2.Text;
+            string NC = textBox3.Text;
+            string SEX = textBox4.Text;
+            string DOB = textBox5.Text;
+            string POB = textBox6.Text;
+            string NOM = textBox7.Text;
+            string COM = textBox8.Text;
+            string NOF = textBox9.Text;
+            string COF = textBox10.Text;
+            string DOMOP = textBox11.Text;
+            string PLACEMAR = textBox12.Text;
+            string NCC = textBox13.Text;
+            string URO = textBox14.Text;
+            string VS = textBox17.Text; 
+            string AS = textBox18.Text; 
+
+            string VI = textBox14.Text; 
+
+            string OR = textBox20.Text; 
+            string DT = textBox19.Text;
+
+            string CIT = await Title_Signature(textBox18.Text);
+            string VST = await Title_Signature(textBox17.Text);
+
+            string DI = _showRemarks; //Remarks Showing
+            string Remarks = textBox21.Text;
+
+
+            ReportViewer rp = new ReportViewer();
+            rp.InitializeReportViewer(
+                BN, PG, RN, DOR, NC, SEX, DOB, POB, NOM, COM, NOF, COF, DOMOP, PLACEMAR, NCC, URO, VS, AS, VI, DI, OR, DT, CIT, VST, Remarks, _showHeader
+            );
+
+            rp.Show();
+
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Birth_Data_Entry_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Birth_Query bq = new Birth_Query();
+            bq.Show();
         }
     }  
 }

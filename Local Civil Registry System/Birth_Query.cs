@@ -150,13 +150,19 @@ namespace Local_Civil_Registry_System
                 string NOF = $"{FFIRST}   {FMI}   {FLAST}";
 
 
-                string DATE = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
                 string SEX = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
                 string FOL = dataGridView1.Rows[e.RowIndex].Cells[15].Value.ToString();
                 string PAGE = dataGridView1.Rows[e.RowIndex].Cells[16].Value.ToString();
-                string DATEMAR = dataGridView1.Rows[e.RowIndex].Cells[17].Value.ToString();
                 string PLACEMAR = dataGridView1.Rows[e.RowIndex].Cells[18].Value.ToString();
-                string DREG = dataGridView1.Rows[e.RowIndex].Cells[19].Value.ToString();
+
+                string _DATE = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
+                string _DATEMAR = dataGridView1.Rows[e.RowIndex].Cells[17].Value.ToString();
+                string _DREG = dataGridView1.Rows[e.RowIndex].Cells[19].Value.ToString();
+
+                string DATE = DateParser(_DATE);
+                string DATEMAR = DateParser(_DATEMAR);
+                string DREG = DateParser(_DREG);
+
 
                 string POB = "BISLIG, SURIGAO DEL SUR";
 
@@ -183,7 +189,22 @@ namespace Local_Civil_Registry_System
                     );
 
                 _bde.Show();
-                this.Close();
+                this.Hide();
+            }
+        }
+
+        private string DateParser(string data)
+        {
+            try
+            {
+                DateTime dt = DateTime.Parse(data);
+                string fdt = dt.ToString("MMMM dd, yyyy").ToUpper();
+                return fdt;
+            }
+            catch(Exception  ex)
+            {
+                Console.WriteLine(ex.Message);
+                return data;
             }
         }
 

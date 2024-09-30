@@ -1061,7 +1061,7 @@
                 <Top>1.72255in</Top>
                 <Left>0.75424in</Left>
                 <Height>3.85136in</Height>
-                <Width>5.4219in</Width>
+                <Width>5.42191in</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1625,7 +1625,9 @@
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>NCC</rd:DefaultName>
@@ -1932,6 +1934,9 @@
             <Height>1.28108in</Height>
             <Width>6.74526in</Width>
             <ZIndex>4</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(Parameters!DI.Value = True, False, True)</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1942,7 +1947,7 @@
         <Height>9.9843in</Height>
         <Style />
       </Body>
-      <Width>8.3in</Width>
+      <Width>8.07083in</Width>
       <Page>
         <PageHeader>
           <Height>1.48492in</Height>
@@ -1965,7 +1970,7 @@
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Height>3.77169cm</Height>
-              <Width>21.082cm</Width>
+              <Width>20.49992cm</Width>
               <Visibility>
                 <Hidden>=IIf(Parameters!ShowHeader.Value = True, False, True)</Hidden>
               </Visibility>
@@ -1992,99 +1997,120 @@
   <ReportParameters>
     <ReportParameter Name="RN">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DOR">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NC">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="SEX">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DOB">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="POB">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NOM">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="COM">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NOF">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="COF">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DOMOP">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="PLACEMAR">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NCC">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="URO">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="BN">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="PG">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="VS">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="AS">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DI">
-      <DataType>String</DataType>
+      <DataType>Boolean</DataType>
+      <Nullable>true</Nullable>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="OR">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -2094,21 +2120,25 @@
     </ReportParameter>
     <ReportParameter Name="DT">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="CIT">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="VST">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Remarks">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

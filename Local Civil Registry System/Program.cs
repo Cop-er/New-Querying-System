@@ -17,7 +17,7 @@ namespace Local_Civil_Registry_System
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Main());
-            Application.Run(new ReportViewer());
+            Application.Run(new Birth_Query());
         }
     }
 }

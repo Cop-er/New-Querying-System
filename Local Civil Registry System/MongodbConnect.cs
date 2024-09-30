@@ -40,6 +40,20 @@ namespace Local_Civil_Registry_System
             return _doc;
         }
 
+        public async Task<BsonDocument> LCR_Signatures_Title(string data)
+        {
+            ConnectToMongoDB("Local_Civil_Registry_System");
+            var _collection = Database.GetCollection<BsonDocument>("Signatures");
+            var _filter = Builders<BsonDocument>.Filter.Regex("UserName", new BsonRegularExpression(data, "i"));
+            var _doc = await _collection.Find(_filter).FirstOrDefaultAsync(); // Get only the first match
+            return _doc;
+        }
+
+
+
+
+
+
 
         public async Task<DataTable> QueryBirthChild(string dt1, string dt2)
         {

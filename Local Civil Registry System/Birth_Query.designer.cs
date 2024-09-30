@@ -163,6 +163,7 @@
             this.txtChild_1.Name = "txtChild_1";
             this.txtChild_1.Size = new System.Drawing.Size(175, 20);
             this.txtChild_1.TabIndex = 3;
+            this.txtChild_1.Text = "JOMARY";
             // 
             // txtChild_2
             // 
@@ -171,6 +172,7 @@
             this.txtChild_2.Name = "txtChild_2";
             this.txtChild_2.Size = new System.Drawing.Size(175, 20);
             this.txtChild_2.TabIndex = 4;
+            this.txtChild_2.Text = "SORIA";
             // 
             // tabPage2
             // 

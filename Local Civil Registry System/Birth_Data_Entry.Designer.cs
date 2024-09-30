@@ -391,6 +391,7 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(343, 20);
             this.textBox13.TabIndex = 12;
+            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
             // 
             // textBox14
             // 
@@ -727,6 +728,7 @@
             this.Name = "Birth_Data_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOCAL CIVIL REGISTRY - CERTIFIED TRUE COPY SYSTEM -";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Birth_Data_Entry_FormClosing);
             this.Load += new System.EventHandler(this.Birth_Data_Entry_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

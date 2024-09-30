@@ -18,62 +18,97 @@ namespace Local_Civil_Registry_System
         public ReportViewer()
         {
             InitializeComponent();
-           InitializeReportViewer();
         }
 
         private void ReportViewer_Load(object sender, EventArgs e)
         {
-
+            InitReport();
         }
 
-        private void InitializeReportViewer()
+        private void InitReport()
         {
+            // Initialize the ReportViewer control
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            //this.reportViewer1.Size = new System.Drawing.Size(800, 450);
-            this.reportViewer1.Dock = DockStyle.Fill;
+            this.reportViewer1.Dock = DockStyle.Fill; // Ensures it fills the form
             this.reportViewer1.TabIndex = 0;
             this.Controls.Add(this.reportViewer1);
 
+            // MongoDB connection object
             MongodbConnect mc = new MongodbConnect();
             string _path_1 = mc._birthPrintForm;
-            reportViewer1.LocalReport.ReportPath = _path_1;
 
-            ReportParameter[] parameters = new ReportParameter[25];
-            parameters[0] = new ReportParameter("RN", "Value1");
-            parameters[1] = new ReportParameter("DOR", "Value2");
-            parameters[2] = new ReportParameter("NC", "Value3");
-            parameters[3] = new ReportParameter("SEX", "Value4");
-            parameters[4] = new ReportParameter("DOB", "Value5");
-            parameters[5] = new ReportParameter("POB", "Value6");
-            parameters[6] = new ReportParameter("NOM", "Value7");
-            parameters[7] = new ReportParameter("COM", "Value8");
-            parameters[8] = new ReportParameter("NOF", "Value9");
-            parameters[9] = new ReportParameter("COF", "Value10");
-            parameters[10] = new ReportParameter("DOMOP", "Value11");
-            parameters[11] = new ReportParameter("PLACEMAR", "Value12");
-            parameters[12] = new ReportParameter("NCC", "Value13");
-            parameters[13] = new ReportParameter("URO", "Value13");
-            parameters[14] = new ReportParameter("BN", "999");
-            parameters[15] = new ReportParameter("PG", "999");
-            parameters[16] = new ReportParameter("VS", "Value13");
-            parameters[17] = new ReportParameter("AS", "Value13");
-            parameters[18] = new ReportParameter("DI", "Value13");
-            parameters[19] = new ReportParameter("OR", "Value13");
-            parameters[20] = new ReportParameter("ShowHeader", "false");
-            parameters[21] = new ReportParameter("DT", "Date");
-            parameters[22] = new ReportParameter("CIT", "Date");
-            parameters[23] = new ReportParameter("VST", "Date");
-            parameters[24] = new ReportParameter("Remarks", "Date");
+            // Set the path of the local report (rdlc file)
+            reportViewer1.LocalReport.ReportPath = _path_1;
+        }
+
+        // Method to initialize report viewer with parameters
+        public void InitializeReportViewer(
+            string BN,
+            string PG,
+            string RN,
+            string DOR,
+            string NC,
+            string SEX,
+            string DOB,
+            string POB,
+            string NOM,
+            string COM,
+            string NOF,
+            string COF,
+            string DOMOP,
+            string PLACEMAR,
+            string NCC,
+            string URO,
+            string VS,
+            string AS,
+            string VI,
+            string DI,
+            string OR,
+            string DT,
+            string CIT,
+            string VST,
+            string Remarks,
+            string _showHeader
+        )
+        {
+            InitReport();
+            // Create and assign report parameters
+            ReportParameter[] parameters = new ReportParameter[25]
+            {
+                new ReportParameter("RN", RN),
+                new ReportParameter("DOR", DOR),
+                new ReportParameter("NC", NC),
+                new ReportParameter("SEX", SEX),
+                new ReportParameter("DOB", DOB),
+                new ReportParameter("POB", POB),
+                new ReportParameter("NOM", NOM),
+                new ReportParameter("COM", COM),
+                new ReportParameter("NOF", NOF),
+                new ReportParameter("COF", COF),
+                new ReportParameter("DOMOP", DOMOP),
+                new ReportParameter("PLACEMAR", PLACEMAR),
+                new ReportParameter("NCC", NCC),
+                new ReportParameter("URO", URO),
+                new ReportParameter("BN", BN),
+                new ReportParameter("PG", PG),
+                new ReportParameter("VS", VS),
+                new ReportParameter("AS", AS),
+                new ReportParameter("DI", DI),
+                new ReportParameter("OR", OR),
+                new ReportParameter("ShowHeader", _showHeader), // Hides the report header
+                new ReportParameter("DT", DT),
+                new ReportParameter("CIT", CIT),
+                new ReportParameter("VST", VST),
+                new ReportParameter("Remarks", Remarks)
+            };
+
+            // Assign the parameters to the report
             reportViewer1.LocalReport.SetParameters(parameters);
 
-
+            // Set additional properties for the ReportViewer
             reportViewer1.CurrentPage = 1;
-            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-            reportViewer1.RefreshReport();
-
-            
+            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout); // Use print layout
+            reportViewer1.RefreshReport(); // Refresh the report to apply changes
         }
     }
 }
