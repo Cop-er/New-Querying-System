@@ -12,13 +12,15 @@ namespace Local_Civil_Registry_System
 {
     public partial class Main : Form
     {
+        public static Main Instance { get; private set; }
         public Main()
         {
             InitializeComponent();
+            Instance = this;
+
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            this.Text = "Main Menu";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             this.Size = new Size(803, 456);

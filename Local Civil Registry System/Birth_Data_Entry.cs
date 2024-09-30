@@ -26,7 +26,7 @@ namespace Local_Civil_Registry_System
             this.Size = new Size(807, 559);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             this.MaximizeBox = false;
-            button4.BackColor = Color.FromName("ControlLight");
+            button4.BackColor = Color.FromName("black");
             Center_Screen();
             Add_Signatures();
 
@@ -96,22 +96,20 @@ namespace Local_Civil_Registry_System
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Birth_Query bq = new Birth_Query();
-            bq.Show();
-            this.Close();
+            closingForm();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (button4.BackColor == Color.FromArgb(128, 128, 255))
+            if (button4.BackColor == Color.FromArgb(64, 0, 64))
             {
-                button4.BackColor = Color.FromName("ControlLight");
+                button4.BackColor = Color.FromName("Black");
                 Remarks_Sizing_No_Remarks();
                 _showRemarks = "false";
 
             } else
             {
-                button4.BackColor = Color.FromArgb(128, 128, 255);
+                button4.BackColor = Color.FromArgb(64, 0, 64);
                 Remarks_Sizing_With_Remarks();
                 _showRemarks = "true";
             }
@@ -120,15 +118,15 @@ namespace Local_Civil_Registry_System
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (button3.BackColor == Color.FromArgb(128, 128, 255))
+            if (button3.BackColor == Color.FromArgb(64, 0, 64))
             {
-                button3.BackColor = Color.FromName("ControlLight");
+                button3.BackColor = Color.FromName("Black");
                 _showHeader = "false";
 
             }
             else
             {
-                button3.BackColor = Color.FromArgb(128, 128, 255);
+                button3.BackColor = Color.FromArgb(64, 0, 64);
                 _showHeader = "true";
             }
         }
@@ -282,8 +280,12 @@ namespace Local_Civil_Registry_System
 
         private void Birth_Data_Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Birth_Query bq = new Birth_Query();
-            bq.Show();
+        }
+
+        private void closingForm()
+        {
+            Birth_Query.Instance.Show();
+            this.Close();
         }
     }  
 }

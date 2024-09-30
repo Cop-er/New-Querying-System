@@ -13,9 +13,12 @@ namespace Local_Civil_Registry_System
 {
     public partial class Birth_Query : Form
     {
-        public Birth_Query()
+
+        public static Birth_Query Instance { get; private set; }
+        public Birth_Query( )
         {
             InitializeComponent();
+            Instance = this;
         }
 
         private void Birth_Query_Load(object sender, EventArgs e)
@@ -111,15 +114,7 @@ namespace Local_Civil_Registry_System
 
         private void Birth_Query_FormClosed(object sender, FormClosedEventArgs e)
         {
-           // foreach (Form form in Application.OpenForms)
-           // {
-           //     if (form is Main mainForm)
-           //     {
-           //         mainForm.Show();
-           //         mainForm.BringToFront();
-           //         break;
-           //     }
-           // };
+            Main.Instance.Show();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -128,11 +123,15 @@ namespace Local_Civil_Registry_System
             {
                 string LCR = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-                string FIRST = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                string MI = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                string LAST = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                string _DATE = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
+                string _DATEMAR = dataGridView1.Rows[e.RowIndex].Cells[17].Value.ToString();
+                string _DREG = dataGridView1.Rows[e.RowIndex].Cells[19].Value.ToString();
 
-                string NC = $"{FIRST}   {MI}   {LAST}";
+                string DATE = DateParser(_DATE);
+                string DATEMAR = DateParser(_DATEMAR);
+                string DREG = DateParser(_DREG);
+
+
 
 
                 string MFIRST = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -149,20 +148,32 @@ namespace Local_Civil_Registry_System
 
                 string NOF = $"{FFIRST}   {FMI}   {FLAST}";
 
+                string FIRST = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                string MI = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string LAST = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                string NC = "";
+
+                if (_DATEMAR != "")
+                {
+                     NC = $"{FIRST}   {MLAST}   {LAST}";
+                }
+                else
+                {
+                     NC = $"{FIRST}   {MI}   {LAST}";
+                }
+                
+
+
+               
+
 
                 string SEX = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
                 string FOL = dataGridView1.Rows[e.RowIndex].Cells[15].Value.ToString();
                 string PAGE = dataGridView1.Rows[e.RowIndex].Cells[16].Value.ToString();
                 string PLACEMAR = dataGridView1.Rows[e.RowIndex].Cells[18].Value.ToString();
 
-                string _DATE = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
-                string _DATEMAR = dataGridView1.Rows[e.RowIndex].Cells[17].Value.ToString();
-                string _DREG = dataGridView1.Rows[e.RowIndex].Cells[19].Value.ToString();
-
-                string DATE = DateParser(_DATE);
-                string DATEMAR = DateParser(_DATEMAR);
-                string DREG = DateParser(_DREG);
-
+                
 
                 string POB = "BISLIG, SURIGAO DEL SUR";
 
@@ -209,6 +220,16 @@ namespace Local_Civil_Registry_System
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Birth_Query_FormClosing(object sender, FormClosingEventArgs e)
         {
 
         }

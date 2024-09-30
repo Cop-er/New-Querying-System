@@ -228,6 +228,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
@@ -255,6 +256,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\printer-32.png" />
+    <None Include="Resources\arrow-80-32.png" />
+    <None Include="Resources\erase-32.png" />
+    <None Include="Resources\neutral-dicision-32.png" />
+    <None Include="Resources\document-32.png" />
+    <None Include="Resources\cementery1.png" />
+    <None Include="Resources\birth %281%29.png" />
+    <None Include="Resources\church.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

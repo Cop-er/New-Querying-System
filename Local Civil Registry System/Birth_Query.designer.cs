@@ -454,6 +454,7 @@
             this.label9.Text = "loading ...";
             this.label9.UseWaitCursor = true;
             this.label9.Visible = false;
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // Birth_Query
             // 
@@ -464,7 +465,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Birth_Query";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Birth_Query";
+            this.Text = "Birth Query";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Birth_Query_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Birth_Query_FormClosed);
             this.Load += new System.EventHandler(this.Birth_Query_Load);
             this.tabControl1.ResumeLayout(false);
