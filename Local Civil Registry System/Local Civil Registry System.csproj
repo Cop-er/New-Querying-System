@@ -168,12 +168,6 @@
     <Compile Include="Birth_Data_Entry.designer.cs">
       <DependentUpon>Birth_Data_Entry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Marriage_Data_Entry.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marriage_Data_Entry.Designer.cs">
-      <DependentUpon>Marriage_Data_Entry.cs</DependentUpon>
-    </Compile>
     <Compile Include="Birth_Query.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +179,13 @@
     </Compile>
     <Compile Include="Death_Query.designer.cs">
       <DependentUpon>Death_Query.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links_RDLC.cs" />
+    <Compile Include="Marriage_Data_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marriage_Data_Entry.Designer.cs">
+      <DependentUpon>Marriage_Data_Entry.cs</DependentUpon>
     </Compile>
     <Compile Include="Marriage_Query.cs">
       <SubType>Form</SubType>
@@ -199,6 +200,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MongodbConnect.cs" />
+    <Compile Include="MyFormatter.cs" />
     <Compile Include="Nationality_Converter.cs" />
     <Compile Include="PlaceOfMarriageCodes.cs" />
     <Compile Include="Program.cs" />
@@ -214,14 +216,14 @@
     <EmbeddedResource Include="Birth_Data_Entry.resx">
       <DependentUpon>Birth_Data_Entry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Marriage_Data_Entry.resx">
-      <DependentUpon>Marriage_Data_Entry.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Birth_Query.resx">
       <DependentUpon>Birth_Query.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Death_Query.resx">
       <DependentUpon>Death_Query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Marriage_Data_Entry.resx">
+      <DependentUpon>Marriage_Data_Entry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Marriage_Query.resx">
       <DependentUpon>Marriage_Query.cs</DependentUpon>

@@ -11,8 +11,8 @@ namespace Local_Civil_Registry_System
 {
     class MongodbConnect
     {
-        public readonly string _birthPrintForm = @"C:\Users\Administrator\source\repos\Local Civil Registry System\Local Civil Registry System\Birth_Certified_True_Copy.rdlc";
-        private readonly string DatabaseConnection = "mongodb://admin:Losser989@192.168.4.56:27017/?directConnection=true";
+        public readonly string _birthPrintForm = Links_RDLC.BirthFormLink;
+        private readonly string DatabaseConnection = Links_RDLC.DbConnection;
         public MongoClient Client { get; private set; }
         public IMongoDatabase Database { get; private set; }
 
@@ -27,7 +27,11 @@ namespace Local_Civil_Registry_System
             {
                 Console.WriteLine($"An error occurred while connecting to MongoDB: {ex.Message}");
                 throw;
+            } finally
+            {
+
             }
+
         }
 
 
@@ -278,46 +282,46 @@ namespace Local_Civil_Registry_System
                 { "CT", "No." },
                 { "LCR", "Registry Number" },
 
-                { "G_FNAME", "Groom First Name" },
+                { "G_FNAME", "Groom First Name" }, //2
                 { "G_MI", "Groom MI" },
                 { "G_LNAME", "Groom Last Name" },
-                { "W_FNAME", "Bride First Name" },
+                { "W_FNAME", "Bride First Name" }, //5
                 { "W_MI", "Bride MI" },
                 { "W_LNAME", "Bride Last Name" },
 
-                { "DATE", "Date of Marriage" },
+                { "DATE", "Date of Marriage" }, //8
 
-                { "G_FFIRST", "First Name" },
+                { "G_FFIRST", "First Name" }, //9
                 { "G_FMI", "MI" },
                 { "G_FLAST", "Last Name" },
-                { "G_MFIRST", "Mother First Name" },
+                { "G_MFIRST", "Mother First Name" }, //12
                 { "G_MMI", "Mother MI" },
                 { "G_MLAST", "Mother Last Name" },
 
-                { "W_FFIRST", "Bride Father First Name" },
+                { "W_FFIRST", "Bride Father First Name" }, //15
                 { "W_FMI", "Bride Father MI" },
                 { "W_FLAST", "Bride Father Last Name" },
-                { "W_MFIRST", "Bride Mother First Name" },
+                { "W_MFIRST", "Bride Mother First Name" }, //18
                 { "W_MMI", "Bride Mother MI" },
                 { "W_MLAST", "Bride Mother Last Name" },
 
 
-                { "G_AGE", "Groom Age" },
-                { "W_AGE", "Bride Age" },
+                { "G_AGE", "Groom Age" },  //21
+                { "W_AGE", "Bride Age" },  //22
 
-                { "G_CITI", "Groom Citizenship" },
-                { "W_CITI", "Bride Citizenship" },
+                { "G_CITI", "Groom Citizenship" },  //23
+                { "W_CITI", "Bride Citizenship" },  //24
 
-                { "G_RELI", "Groom Religion" },
+                { "G_RELI", "Groom Religion" },   //25
                 { "W_RELI", "Bride Religion" },
 
-                { "G_STATUS", "Groom Status" },
+                { "G_STATUS", "Groom Status" },  //27
                 { "W_STATUS", "Bride Status" },
 
-                { "FOL", "Book Number" },
+                { "FOL", "Book Number" },  //29
                 { "PAGE", "Page Number" },
 
-                { "DREG", "Date of Registration" },
+                { "DREG", "Date of Registration" },  //31
 
 
             };

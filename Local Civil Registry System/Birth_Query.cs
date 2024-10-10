@@ -117,56 +117,22 @@ namespace Local_Civil_Registry_System
             Main.Instance.Show();
         }
 
-        private string formatRegistry(string data)
-        {
-            string rawData = data.StartsWith("B") ? data.Substring(1) : data;
-            if (!long.TryParse(rawData, out _))
-            {
-                return null;
-            }
-            if (rawData.Length < 3)
-            {
-                return null;
-            }
-
-            string year;
-            string number;
-            if (data.StartsWith("B"))
-            {
-                year = "20" + rawData.Substring(0, 2);
-                number = rawData.Substring(2).TrimStart('0');
-            }
-            else
-            {
-                year = rawData.Substring(0, 2);
-                number = rawData.Substring(2).TrimStart('0');
-            }
-
-            if (string.IsNullOrEmpty(number))
-            {
-                number = "0";
-            }
-
-            return $"{year}-{number}";
-
-        }
-
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
+                MyFormatter mf = new MyFormatter();
+
                 string _LCR = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string LCR = formatRegistry(_LCR);
+                string LCR = mf.formatRegistry(_LCR);
 
                 string _DATE = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
                 string _DATEMAR = dataGridView1.Rows[e.RowIndex].Cells[17].Value.ToString();
                 string _DREG = dataGridView1.Rows[e.RowIndex].Cells[19].Value.ToString();
 
-                string DATE = DateParser(_DATE);
-                string DATEMAR = DateParser(_DATEMAR);
-                string DREG = DateParser(_DREG);
-
-
+                string DATE = mf.DateParser(_DATE);
+                string DATEMAR = mf.DateParser(_DATEMAR);
+                string DREG = mf.DateParser(_DREG);
 
 
                 string MFIRST = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -236,21 +202,6 @@ namespace Local_Civil_Registry_System
 
                 _bde.Show();
                 this.Hide();
-            }
-        }
-
-        private string DateParser(string data)
-        {
-            try
-            {
-                DateTime dt = DateTime.Parse(data);
-                string fdt = dt.ToString("MMMM dd, yyyy").ToUpper();
-                return fdt;
-            }
-            catch(Exception  ex)
-            {
-                Console.WriteLine(ex.Message);
-                return data;
             }
         }
 
