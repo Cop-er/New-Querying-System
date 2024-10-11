@@ -11,7 +11,7 @@ namespace Local_Civil_Registry_System
     {
         //for Birth
         public static string BirthFormLink { get; private set; } = "Birth_Certified_True_Copy.rdlc";
-        public static readonly string BirthFormLink_Dummy = @"C:\Users\Administrator\source\repos\Local Civil Registry System\Local Civil Registry System\Birth_Certified_True_Copy.rdlc";
+        public static readonly string BirthFormLink_Dummy = @"C:\Users\Administrator\source\repos\Local Civil Registry System\Local Civil Registry System\Reports\Birth_Certified_True_Copy.rdlc";
 
 
         //Mongodb Connection
@@ -20,16 +20,12 @@ namespace Local_Civil_Registry_System
 
         static Links_RDLC()
         {
-            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, BirthFormLink);
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Reports\" + BirthFormLink);
+            BirthFormLink = fullPath;
 
             if (!File.Exists(fullPath))
             {
                 BirthFormLink = BirthFormLink_Dummy;
-            }
-            else
-            {
-                BirthFormLink = fullPath;
-
             }
         }
 

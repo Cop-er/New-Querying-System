@@ -264,7 +264,7 @@ namespace Local_Civil_Registry_System
             string Remarks = textBox21.Text;
 
 
-            ReportViewer rp = new ReportViewer();
+            BirthReport rp = new BirthReport();
             rp.InitializeReportViewer(
                 BN, PG, RN, DOR, NC, SEX, DOB, POB, NOM, COM, NOF, COF, DOMOP, PLACEMAR, NCC, URO, VS, AS, VI, DI, OR, DT, CIT, VST, Remarks, _showHeader
             );

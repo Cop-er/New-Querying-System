@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,38 +8,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
 
 namespace Local_Civil_Registry_System
 {
-    public partial class ReportViewer : Form
+    public partial class DeathReport : Form
     {
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
 
-        public ReportViewer()
+        public DeathReport()
         {
             InitializeComponent();
         }
 
-        private void ReportViewer_Load(object sender, EventArgs e)
+        private void Printing_Load(object sender, EventArgs e)
         {
             InitReport();
+            this.reportViewer1.RefreshReport();
         }
 
         private void InitReport()
         {
             // Initialize the ReportViewer control
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+           // this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewer1.Dock = DockStyle.Fill; // Ensures it fills the form
             this.reportViewer1.TabIndex = 0;
-            this.Controls.Add(this.reportViewer1);
+           // this.Controls.Add(this.reportViewer1);
 
             // MongoDB connection object
             MongodbConnect mc = new MongodbConnect();
             string _path_1 = mc._birthPrintForm;
 
             // Set the path of the local report (rdlc file)
-            reportViewer1.LocalReport.ReportPath = _path_1;
+            //reportViewer1.LocalReport.ReportPath = _path_1;
+            Console.WriteLine("Print Location");
+            Console.WriteLine(reportViewer1.LocalReport.ReportPath);
         }
 
         // Method to initialize report viewer with parameters
@@ -110,5 +112,6 @@ namespace Local_Civil_Registry_System
             reportViewer1.SetDisplayMode(DisplayMode.PrintLayout); // Use print layout
             reportViewer1.RefreshReport(); // Refresh the report to apply changes
         }
+
     }
 }

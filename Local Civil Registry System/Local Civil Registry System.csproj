@@ -162,35 +162,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Birth_Data_Entry.cs">
+    <Compile Include="Birth Forms\Birth_Data_Entry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Birth_Data_Entry.designer.cs">
+    <Compile Include="Birth Forms\Birth_Data_Entry.designer.cs">
       <DependentUpon>Birth_Data_Entry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Birth_Query.cs">
+    <Compile Include="Birth Forms\Birth_Query.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Birth_Query.designer.cs">
+    <Compile Include="Birth Forms\Birth_Query.designer.cs">
       <DependentUpon>Birth_Query.cs</DependentUpon>
     </Compile>
-    <Compile Include="Death_Query.cs">
+    <Compile Include="Death Forms\Death_Query.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Death_Query.designer.cs">
+    <Compile Include="Death Forms\Death_Query.designer.cs">
       <DependentUpon>Death_Query.cs</DependentUpon>
     </Compile>
     <Compile Include="Links_RDLC.cs" />
-    <Compile Include="Marriage_Data_Entry.cs">
+    <Compile Include="Marriage Forms\Marriage_Data_Entry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Marriage_Data_Entry.Designer.cs">
+    <Compile Include="Marriage Forms\Marriage_Data_Entry.Designer.cs">
       <DependentUpon>Marriage_Data_Entry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Marriage_Query.cs">
+    <Compile Include="Marriage Forms\Marriage_Query.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Marriage_Query.designer.cs">
+    <Compile Include="Marriage Forms\Marriage_Query.designer.cs">
       <DependentUpon>Marriage_Query.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
@@ -199,37 +199,60 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="MongodbConnect.cs" />
-    <Compile Include="MyFormatter.cs" />
-    <Compile Include="Nationality_Converter.cs" />
-    <Compile Include="PlaceOfMarriageCodes.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportViewer.cs">
+    <Compile Include="Classes\MongodbConnect.cs" />
+    <Compile Include="Classes\MyFormatter.cs" />
+    <Compile Include="Classes\Nationality_Converter.cs" />
+    <Compile Include="Classes\PlaceOfMarriageCodes.cs" />
+    <Compile Include="Reports Viewer\DeathReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportViewer.Designer.cs">
-      <DependentUpon>ReportViewer.cs</DependentUpon>
+    <Compile Include="Reports Viewer\DeathReport.designer.cs">
+      <DependentUpon>DeathReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports Viewer\MarriageReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports Viewer\MarriageReport.designer.cs">
+      <DependentUpon>MarriageReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports Viewer\BirthReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports Viewer\BirthReport.designer.cs">
+      <DependentUpon>BirthReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="Birth_Certified_True_Copy.rdlc" />
-    <EmbeddedResource Include="Birth_Data_Entry.resx">
+    <EmbeddedResource Include="Reports Viewer\DeathReport.resx">
+      <DependentUpon>DeathReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports Viewer\MarriageReport.resx">
+      <DependentUpon>MarriageReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Death_Certified_True_Copy.rdlc" />
+    <EmbeddedResource Include="Reports\Marriage_Certified_True_Copy .rdlc" />
+    <EmbeddedResource Include="Reports\Birth_Certified_True_Copy.rdlc" />
+    <EmbeddedResource Include="Birth Forms\Birth_Data_Entry.resx">
       <DependentUpon>Birth_Data_Entry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Birth_Query.resx">
+    <EmbeddedResource Include="Birth Forms\Birth_Query.resx">
       <DependentUpon>Birth_Query.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Death_Query.resx">
+    <EmbeddedResource Include="Death Forms\Death_Query.resx">
       <DependentUpon>Death_Query.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Marriage_Data_Entry.resx">
+    <EmbeddedResource Include="Marriage Forms\Marriage_Data_Entry.resx">
       <DependentUpon>Marriage_Data_Entry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Marriage_Query.resx">
+    <EmbeddedResource Include="Marriage Forms\Marriage_Query.resx">
       <DependentUpon>Marriage_Query.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports Viewer\BirthReport.resx">
+      <DependentUpon>BirthReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -241,9 +264,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReportViewer.resx">
-      <DependentUpon>ReportViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
     <None Include="Local Civil Registry System_TemporaryKey.pfx" />
